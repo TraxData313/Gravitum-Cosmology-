@@ -13115,29 +13115,56 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[140]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Here we aims to explain </span>
-<span class="c1"># the Universe expansion and Gravity as a consequence </span>
-<span class="c1"># of the evolution of its quantum complexity.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Appendix:</span>
+<span class="c1">#</span>
+<span class="c1"># - Recently a deep connection between Quantum Entanglement Complexity </span>
+<span class="c1">#   and the Structure of Space has become a very hot subject of study.</span>
+<span class="c1"># - There are a lot of technical papers online regarding this subject,</span>
+<span class="c1">#   but there are little available to the general public, </span>
+<span class="c1">#   on this new and exciting topic.</span>
+<span class="c1"># - I decided to put toghether this short Jupyter note,</span>
+<span class="c1">#   where we&#39;ll just follow the consequences of a powerful assumption:</span>
+<span class="c1">#   &quot;Space IS nothing but Quantum Complexity&quot;</span>
 
+<span class="c1"># So out plan of action will be:</span>
+<span class="c1">#</span>
+<span class="c1"># 1. Count how many bits of information there are in our Universe:</span>
+<span class="c1">#  - Take the observed Universe and crush it into a Black Hole.</span>
+<span class="c1">#    In order to answer how much bits there are in out Universe,</span>
+<span class="c1">#    we will count the pixels on the Horizon of the resulting Blach Hole.</span>
 
-<span class="c1"># What we we do in simple python code below is:</span>
+<span class="c1"># 2. Calculate the Quantum Complexity of our Universe&#39; bits:</span>
+<span class="c1">#  - Using the Second Law of Quantum Complexity, we are going to</span>
+<span class="c1">#    calculate how the complexity of those bits evolves with time.</span>
+<span class="c1">#    SPOILER: It grows fast!</span>
 
-<span class="c1"># - Take the observed Universe Mass and crush it into a Black Hole,</span>
-<span class="c1">#   in order answer how much bits there are in out Universe</span>
+<span class="c1"># 3. After that we are going to take the hint from the Holographic</span>
+<span class="c1">#    principle (Space = Quantum Complexity), and are going to </span>
+<span class="c1">#    assume that Growth of Quantum Complexity = Growth of Space</span>
 
-<span class="c1"># - Using the Second Law of Quantum Complexity, we are going to</span>
-<span class="c1">#   calculate how the complexity of those bits will increase</span>
+<span class="c1"># 4. Once here, we will have our model of the Universe expansion and put it to the test:</span>
+<span class="c1">#  - We are going to calculate the predicted Hubble expansion rate for our</span>
+<span class="c1">#    theory, and compare it with the real (observed) Hubble exp rate</span>
 
-<span class="c1"># - After that we are going to take the hint from the Holographic</span>
-<span class="c1">#   principle (Space = Quantum Complexity), and are going to </span>
-<span class="c1">#   assume that Growth of Quantum Complexity = Growth of Space</span>
+<span class="c1"># 5. Now, let&#39;s plot our model agains the data from the standard expansion models:</span>
+<span class="c1">#  - Currently our Universe expansion is modeled by the Big Bang Theory, which</span>
+<span class="c1">#    can be traced back to almost time = 0 seconds.</span>
+<span class="c1">#  - Before that, Inflation theory predicts that the Universe expanded rapidly in a fraction</span>
+<span class="c1">#    of a second, just moments after time = 0 (at about t = 1e-35 seconds (0.0...35zeroshere..01 seconds))</span>
+<span class="c1">#  - There is no &quot;standard&quot; theory of what happened before Inflation.</span>
 
-<span class="c1"># - Once we have the prediction of how Space will Grow, we are</span>
-<span class="c1">#   going to compare this to the Hubble space expansion rate,</span>
-<span class="c1">#   to find out they are exactly equal</span>
+<span class="c1">#  - Will our model be able to extend back to that &quot;before Inflation&quot; time?</span>
+<span class="c1">#  - Will our model show a smoother picture of what could have happened?</span>
+<span class="c1">#  - Can we go even further?</span>
+
+<span class="c1"># Lets get started and see!</span>
+
+<span class="c1"># What we you need to be able to follow this presentation?</span>
+<span class="c1"># - Only some hight school maths and maybe basic Python knowedge</span>
+<span class="c1"># - We are going to let Python do all the heavy leafting for us</span>
 </pre></div>
 
     </div>
@@ -13147,10 +13174,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># CONSTANTS:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># CONSTANTS we will use, taken from Wikipedia:</span>
 
 <span class="c1"># - Cosmological observables:</span>
 <span class="c1"># -- Universe Mass:</span>
@@ -13168,12 +13195,12 @@ div#notebook {
 <span class="n">c</span> <span class="o">=</span> <span class="mf">3.00E+08</span> <span class="c1">#[m/s]</span>
 <span class="c1"># -- Grav. constant:</span>
 <span class="n">G</span> <span class="o">=</span> <span class="mf">6.67E-11</span>
-<span class="c1"># -- Pi 3.14:</span>
+<span class="c1"># -- Pi:</span>
 <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
 
 <span class="c1"># - Plank units in SI:</span>
 <span class="c1"># -- Plank lenght:</span>
-<span class="n">Lp</span> <span class="o">=</span> <span class="mf">1.616E-35</span> <span class="c1">#[m]</span>
+<span class="n">Lp</span> <span class="o">=</span> <span class="mf">1.616E-35</span>   <span class="c1">#[m]</span>
 <span class="c1"># -- Plank area:</span>
 <span class="n">Ap</span> <span class="o">=</span> <span class="mf">2.61219E-70</span> <span class="c1">#[m^2]</span>
 <span class="c1"># -- Plank Volume:</span>
@@ -13189,7 +13216,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># From Black Hole (BH) thermodynamics we know that one bit </span>
@@ -13201,18 +13228,17 @@ div#notebook {
 <span class="c1"># What is the radius (Schwarzchild radius) of a black hole </span>
 <span class="c1"># as a function of its mass? Here is the equation:</span>
 
-<span class="c1"># Radius = 2*G*M/c^2 [m]</span>
+<span class="c1"># Radius = 2*G*Mass/c^2 [m]</span>
+<span class="c1">#   Where:</span>
+<span class="c1">#   - G: Grav. Constant</span>
+<span class="c1">#   - c: speed of light</span>
 
-<span class="c1"># Where:</span>
-<span class="c1"># - G: Grav. Constant</span>
-<span class="c1"># - M: mass</span>
-<span class="c1"># - c: speed of light</span>
-
-<span class="c1"># Let&#39;s plug in this equation the Universe Mass and calculate the </span>
+<span class="c1"># Lets plug in this equation the Universe Mass and calculate the </span>
 <span class="c1"># Universe Radius if it was a Black Hole:</span>
 
 <span class="n">Radius</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">G</span><span class="o">*</span><span class="n">UM</span><span class="o">/</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
+<span class="c1"># Lets print it now:</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Universe Blach Hole Radius:&quot;</span><span class="p">,</span> <span class="n">Radius</span><span class="p">,</span> <span class="s2">&quot;[m^2]&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -13241,7 +13267,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[109]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># In order to count the bits, we need the area of the BH horizon,</span>
@@ -13251,10 +13277,10 @@ div#notebook {
 <span class="c1"># Area = 4*pi*Radius^2</span>
 
 <span class="c1"># And let&#39;s calculate the Blach Hole Horizon Area of out Universe</span>
-<span class="c1"># it it was a Black Hole:</span>
+<span class="c1"># if it was a Black Hole:</span>
 <span class="n">Area</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">Radius</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Universe Black Hole area:&quot;</span><span class="p">,</span> <span class="n">Area</span><span class="p">,</span> <span class="s2">&quot;[m^2]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Universe Black Hole Area:&quot;</span><span class="p">,</span> <span class="n">Area</span><span class="p">,</span> <span class="s2">&quot;[m^2]&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13271,7 +13297,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Universe Black Hole area: 3.0598824779840006e+54 [m^2]
+<pre>Universe Black Hole Area: 3.0598824779840006e+54 [m^2]
 </pre>
 </div>
 </div>
@@ -13282,18 +13308,20 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[110]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># So let&#39;s come back to that fact from thermodynamics about the</span>
-<span class="c1"># number of bits in a Black Hole as a function of its area,</span>
-<span class="c1"># and calculate the bits that make our Universe.</span>
-
-<span class="c1"># 1 bit for every Plank Area on the BH Horizon Area</span>
-<span class="c1"># So number of bits = Total Area / Plank Area</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - How much bits of information make up a Blach Hole?</span>
+<span class="c1">#   There is 1 bit for every Plank Area on the BH Horizon Area</span>
+<span class="c1">#   So number of bits = Total Area / Plank Area</span>
 
 <span class="n">UB</span> <span class="o">=</span> <span class="n">Area</span> <span class="o">/</span> <span class="n">Ap</span>
 
+<span class="c1"># FYI: If you are wondering exactly how scientists found out how much</span>
+<span class="c1">#      bits of pure information there are in a Black Hole</span>
+<span class="c1">#      you can read more on the subject of &quot;Black hole thermodynamics&quot;</span>
+
+<span class="c1"># - But now, lets just print them out:</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Our Universe has:&quot;</span><span class="p">,</span> <span class="n">UB</span><span class="p">,</span> <span class="s2">&quot;bits&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -13322,13 +13350,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># One of the most fundamental physics principles is that information</span>
-<span class="c1"># never disappears or gets created, eg UB = const, so once we </span>
-<span class="c1"># calculate how much bits out Universe would have if it was a BH,</span>
-<span class="c1"># we know that it would have those bits in every state, even now</span>
+<span class="c1"># never disappears and never gets created, so once we </span>
+<span class="c1"># calculate how much bits our Universe would have if it was a BH,</span>
+<span class="c1"># we know that it would have the same number of bits in its every state, even now</span>
+
+<span class="c1">#  UB = const</span>
 
 <span class="c1"># Long story short, we now know how much bits of information make up</span>
 <span class="c1"># our Universe, given the Mass we observe,</span>
@@ -13355,7 +13385,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># GROWTH OF THE QUANTUM COMPLEXITY</span>
@@ -13367,18 +13397,18 @@ div#notebook {
 <span class="c1">#   number of those connections. The more connected the system</span>
 <span class="c1">#   is - the more entangled, or Complex, it gets.</span>
 
-<span class="c1"># From the Second Law of Quantum Complexity we know how fast the</span>
-<span class="c1"># Complexity of a system with given amount of bits grows, as a</span>
-<span class="c1"># function of time. Complexity as a function of time: C(t)</span>
+<span class="c1"># The Second Law of Quantum Complexity tells us how fast the</span>
+<span class="c1"># Complexity of a system, with a given amount of bits grows with time.</span>
+<span class="c1"># Complexity as a function of time C(t) equation is:</span>
 
-<span class="c1"># And here is the relation for C(t):</span>
 <span class="c1"># C(t) = Bits*Time</span>
 
 <span class="c1"># So if the system is made from 4 bits, and 10 seconds have passed</span>
-<span class="c1"># the total complexity of this system is expected to be 4*10 = 40</span>
+<span class="c1"># the total complexity of this system is expected to be:</span>
+<span class="c1"># C(10) = 4*10 = 40</span>
 
-<span class="c1"># Well, our Universe has UB bits. How fast does the complexity</span>
-<span class="c1"># of our Universe grows?</span>
+<span class="c1"># Well, we have calculated how much bits our Universe has. </span>
+<span class="c1"># How fast does the complexity of our Universe grow?</span>
 </pre></div>
 
     </div>
@@ -13388,14 +13418,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># In order to get the Growth of complexity, we take the first</span>
 <span class="c1"># derivative of this equation to get:</span>
 <span class="c1"># Growth = dC(t)/dt = d(Bits*Time)/dt = Bits</span>
 
-<span class="c1"># So system of N bits grows new N connections per unit of time</span>
+<span class="c1"># So system of N bits grows new N connections per every unit of time</span>
 
 <span class="c1"># This is how much units of Complexity will be added for a unit of</span>
 <span class="c1"># time. Here is where we add the assumption of our theory:</span>
@@ -13406,13 +13436,14 @@ div#notebook {
 <span class="c1"># Growth = Universe Bits [VolumeUnits/TimeUnits]</span>
 
 <span class="c1"># But we have to be careful, this growth is not yet in meters and</span>
-<span class="c1"># seconds, it is in fundamental Plank units (plan volume and time)</span>
+<span class="c1"># seconds, it is in fundamental Plank units (Plank Volume and Time)</span>
 <span class="c1"># - To convert it to SI units (meters and seconds), we multiply</span>
 <span class="c1">#   by Plank Volume and divide by Plank Time, to get the growth</span>
 <span class="c1">#   of space in meters^3 / seconds:</span>
-<span class="n">Growth</span> <span class="o">=</span> <span class="n">UB</span><span class="o">*</span><span class="n">Vp</span><span class="o">/</span><span class="n">Tp</span>
+<span class="n">Growth</span> <span class="o">=</span> <span class="n">UB</span><span class="o">*</span><span class="n">Vp</span><span class="o">/</span><span class="n">Tp</span> <span class="c1">#[m^3/sec]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The growth rate of space is:&quot;</span><span class="p">,</span> <span class="n">Growth</span><span class="p">,</span> <span class="s2">&quot;[m^3/s]&quot;</span><span class="p">)</span>
+<span class="c1"># And calculating the answer...</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The growth rate of space is:&quot;</span><span class="p">,</span> <span class="n">Growth</span><span class="p">,</span> <span class="s2">&quot;[m^3/sec]&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13453,15 +13484,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># PREDICTING THE HUBBLE EXPANSION RATE</span>
 
-<span class="c1"># What is the Hubble constant, or Hubble exp rate (H)?</span>
+<span class="c1"># Lets see what will be the Hubble exp rate in our model</span>
+<span class="c1"># and compare it with the real (observed) Hubble exp rate</span>
 
-<span class="c1"># It is how much faster galaxies move away from us as a function of </span>
-<span class="c1"># their distance from us. And here is what we observe:</span>
+<span class="c1"># - But what is the Hubble exp rate (H)?</span>
+<span class="c1">#   It is how much faster galaxies move away from us as a function of </span>
+<span class="c1">#   their distance from us. And here is its observed value:</span>
 <span class="n">H</span> <span class="o">=</span> <span class="mf">2.35E-18</span> <span class="c1">#[(m/sec)/m]</span>
 
 <span class="c1"># Now we want to predict the Hubble exp rate in out model Universe,</span>
@@ -13476,11 +13509,11 @@ div#notebook {
 <span class="c1">#   Hubble exp rate [(m/sec)/m]</span>
 <span class="c1">#   Growth of space [m^3/sec]</span>
 <span class="c1">#   </span>
-<span class="c1">#   to get from [m^3/sec] to [(m/sec)/m] we need to multiply</span>
+<span class="c1">#   to get from [m^3/sec] to [(m/sec)/m] we need to divide</span>
 <span class="c1">#   by m^3, by volume, by the Universe Volue at the given time</span>
 
 <span class="c1"># Long story short, the predicted Hubble exp rate at the current</span>
-<span class="c1"># moment is:</span>
+<span class="c1"># moment would be:</span>
 
 <span class="n">pH</span> <span class="o">=</span> <span class="n">Growth</span> <span class="o">/</span> <span class="n">UV</span>
 <span class="c1"># where UV = Observed Universe Volume</span>
@@ -13513,7 +13546,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Lets compare this to what the observed Hubble exp rate is:</span>
@@ -13547,11 +13580,13 @@ Observed : 2.35e-18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[220]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># NOTE that the observed Hubble rate is with error +2.1 / -2.3</span>
-<span class="c1"># so our prediction is well within the error margin</span>
+<span class="c1"># so our prediction is well within the error margin!</span>
+
+<span class="c1"># Our model just exactly predeicted the Hubble exp rate!</span>
 </pre></div>
 
     </div>
@@ -13574,19 +13609,23 @@ Observed : 2.35e-18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[186]:</div>
+<div class="prompt input_prompt">In&nbsp;[103]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># PLOTTING THE UNIVERSE RADIUS AS A FUNCITON OF TIME</span>
-<span class="c1"># - Lets plot the Universe Radiums against time and compare the</span>
+<span class="c1"># - Lets plot the Universe Radius against time and compare the</span>
 <span class="c1">#   resulting line with the current standard model (Inflation and</span>
 <span class="c1">#   Big Bang Theory)</span>
 
-<span class="c1"># Let&#39;s plot 9 timestamps from t=1e-45 to t=1e+35 seconds</span>
+<span class="c1"># If you ae not interested in the details, you can skip to the</span>
+<span class="c1"># plot, as it takes a few steps to get there.</span>
+
+<span class="c1"># Let&#39;s plot time from t=1e-45 to t=1e+35 seconds, in 9 timestamps.</span>
 <span class="c1"># NOTE: The current Universe Life is about 1e+17 seconds</span>
 <span class="c1">#       so we are going to plot the past and the future of our</span>
 <span class="c1">#       Universe.</span>
-<span class="c1"># - Picking 9 timestamps:</span>
+
+<span class="c1"># - Creating 9 timestamps:</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">Timestamps</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">n</span> <span class="o">=</span> <span class="o">-</span><span class="mi">45</span>
@@ -13604,23 +13643,24 @@ Observed : 2.35e-18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[210]:</div>
+<div class="prompt input_prompt">In&nbsp;[104]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - What is the radius as per the standard theoryes:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - What is the radius as per the standard theoryes, for the given 9 timestamps:</span>
 <span class="n">standard_UR</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">1e-55</span><span class="p">,</span> 
                 <span class="mf">1e-50</span><span class="p">,</span>
-                <span class="mf">1e+13</span><span class="p">,</span>
-                <span class="mf">1e+17</span><span class="p">,</span>
-                <span class="mf">1e+21</span><span class="p">,</span>
-                <span class="mf">1e+25</span><span class="p">,</span>
-                <span class="mf">1e+29</span><span class="p">,</span>
-                <span class="mf">1e+34</span><span class="p">,</span>
-                <span class="mf">1e+39</span><span class="p">]</span>
+                <span class="mf">1e+10</span><span class="p">,</span>
+                <span class="mf">1e+14</span><span class="p">,</span>
+                <span class="mf">1e+18</span><span class="p">,</span>
+                <span class="mf">1e+22</span><span class="p">,</span>
+                <span class="mf">1e+26</span><span class="p">,</span>
+                <span class="mf">1e+30</span><span class="p">,</span>
+                <span class="mf">1e+34</span><span class="p">]</span>
 <span class="n">standard_UR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">standard_UR</span><span class="p">)</span>
+
 <span class="c1"># NOTE: Here the first two entries are from the pre-Inflationary era,</span>
-<span class="c1">#       then the Universe went from 1e-50 to 1e+13 Radius</span>
-<span class="c1">#       in a fraction of the second (Inflation), and now</span>
+<span class="c1">#       then the Universe went from 1e-50 to 1e+13 Radius (crazy fast!)</span>
+<span class="c1">#       in a fraction of the second (Inflation), and after that</span>
 <span class="c1">#       it increases exponetially as per the Big Bang Theory</span>
 </pre></div>
 
@@ -13631,15 +13671,20 @@ Observed : 2.35e-18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[211]:</div>
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - What is the predicted Universe Radius as per this theory:</span>
-<span class="c1">#   We know that Universe Volume = Growth*Time</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - What is the predicted Universe Radius as per our theory:</span>
+<span class="c1">#   We know that the predicted Universe Volume at a given time is the Growth*Time</span>
 <span class="c1">#   From the Volume we can easily recover the Radius, using</span>
-<span class="c1">#   the math formula Radius = (3*Volume/4*pi)^(1/3),</span>
-<span class="c1">#   so UR(Time) = (3*(Growth*Time)/4*pi)^(1/3),</span>
-<span class="c1">#   lets calculate the values given out timestamps:</span>
+<span class="c1">#   the math formula for Radius as a function of Volume:</span>
+<span class="c1">#   Radius = (3*Volume/4*pi)^(1/3)</span>
+
+<span class="c1"># Replacing the Volume with Growth*Time we get:</span>
+<span class="c1">#   pUR(Time) = (3*(Growth*Time)/4*pi)^(1/3)</span>
+
+<span class="c1">#   And now lets calculate the values given out timestamps:</span>
+<span class="c1">#   where pUR stands for the predicted Universe Radius</span>
 
 <span class="n">predicted_UR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">Growth</span><span class="o">*</span><span class="n">Timestamps</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted Radiuses(Timestamps):&quot;</span><span class="p">)</span>
@@ -13662,9 +13707,9 @@ Observed : 2.35e-18
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Predicted Radiuses(Timestamps):
-[6.02854142e+05 1.29880988e+09 2.79820105e+12 6.02854142e+15
- 1.29880988e+19 2.79820105e+22 6.02854142e+25 1.29880988e+29
- 2.79820105e+32]
+[602854.1417277094 1298809875.9675746 2798201052540.55 6028541417277087.0
+ 1.298809875967573e+19 2.798201052540546e+22 6.028541417277079e+25
+ 1.2988098759675713e+29 2.7982010525405424e+32]
 
 </pre>
 </div>
@@ -13676,10 +13721,12 @@ Observed : 2.35e-18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[212]:</div>
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - Make the data look nice:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - Lets format the data in sci format (10^n),</span>
+<span class="c1">#   so that we can take a look at the numbers, before we plot them:</span>
+
 <span class="n">sci_format_Timestamps</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Timestamps</span><span class="p">)):</span>
     <span class="n">sci_format_Timestamps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.2E}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Timestamps</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
@@ -13689,6 +13736,7 @@ Observed : 2.35e-18
 <span class="n">sci_format_st_UR</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">standard_UR</span><span class="p">)):</span>
     <span class="n">sci_format_st_UR</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.2E}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">standard_UR</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+    
     
 <span class="c1"># - Now lets compare the Prediction with the Standard Model:</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Given timestamps[sec]:&quot;</span><span class="p">)</span>
@@ -13719,7 +13767,7 @@ Observed : 2.35e-18
 [&#39;1.00E-45&#39;, &#39;1.00E-35&#39;, &#39;1.00E-25&#39;, &#39;1.00E-15&#39;, &#39;1.00E-05&#39;, &#39;1.00E+05&#39;, &#39;1.00E+15&#39;, &#39;1.00E+25&#39;, &#39;1.00E+35&#39;]
 
 - Standard Model Radius(t):
-[&#39;1.00E-55&#39;, &#39;1.00E-50&#39;, &#39;1.00E+13&#39;, &#39;1.00E+17&#39;, &#39;1.00E+21&#39;, &#39;1.00E+25&#39;, &#39;1.00E+29&#39;, &#39;1.00E+34&#39;, &#39;1.00E+39&#39;]
+[&#39;1.00E-55&#39;, &#39;1.00E-50&#39;, &#39;1.00E+10&#39;, &#39;1.00E+14&#39;, &#39;1.00E+18&#39;, &#39;1.00E+22&#39;, &#39;1.00E+26&#39;, &#39;1.00E+30&#39;, &#39;1.00E+34&#39;]
 
 - Predicted Radius(t):
 [&#39;6.03E+05&#39;, &#39;1.30E+09&#39;, &#39;2.80E+12&#39;, &#39;6.03E+15&#39;, &#39;1.30E+19&#39;, &#39;2.80E+22&#39;, &#39;6.03E+25&#39;, &#39;1.30E+29&#39;, &#39;2.80E+32&#39;]
@@ -13733,10 +13781,15 @@ Observed : 2.35e-18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[218]:</div>
+<div class="prompt input_prompt">In&nbsp;[108]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - Lets get the data ready to plot:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - Even before plotting you can see how much smoother solution</span>
+<span class="c1">#   our model already gives us</span>
+
+<span class="c1"># PLOTTING THE DATA:</span>
+
+<span class="c1"># - Importing the needed libraries:</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">log</span>
@@ -13751,7 +13804,7 @@ Observed : 2.35e-18
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;log of time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;log of radius&#39;</span><span class="p">)</span>
 
-<span class="c1"># - Create the ines:</span>
+<span class="c1"># - Create the lines:</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log_time</span><span class="p">,</span> 
          <span class="n">log_predicted_UR</span><span class="p">,</span> 
          <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,)</span>
@@ -13759,9 +13812,33 @@ Observed : 2.35e-18
          <span class="n">log_standard_UR</span><span class="p">,</span> 
          <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
+<span class="c1"># - Plot a dot for the current moment, with the predicted Universe Radius:</span>
+<span class="c1"># --  current Universe Life:</span>
+<span class="n">pX</span> <span class="o">=</span> <span class="p">[</span><span class="n">UL</span><span class="p">]</span>        
+<span class="c1"># -- log of the current Universe Life:</span>
+<span class="n">pX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">pX</span><span class="p">)</span>
+<span class="c1"># -- predicted Radius at time = current Universe Life:</span>
+<span class="n">pY</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">Growth</span><span class="o">*</span><span class="n">UL</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> 
+<span class="c1"># -- log of predicted Radius at time = current Universe Life:</span>
+<span class="n">pY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">pY</span><span class="p">)</span>   
+<span class="c1"># -- drawing the dot on the plot:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pX</span><span class="p">,</span> <span class="n">pY</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+
+<span class="c1"># NOTE:</span>
+<span class="c1"># - You need to have some intuition with </span>
+<span class="c1">#   the logarithmoc scales in order to</span>
+<span class="c1">#   to grasp the evolution of the Universe</span>
+<span class="c1">#   by this graph.</span>
+<span class="c1"># - If you don&#39;t have that, just google &quot;logarithmic scales&quot;</span>
+<span class="c1">#   or check out this 10 min video as a starter: </span>
+<span class="c1"># URL: https://www.khanacademy.org/math/algebra2/exponential-and-logarithmic-functions/logarithmic-scale/v/logarithmic-scale</span>
+
+
 <span class="c1"># Now lets plot those values to compare:</span>
-<span class="c1"># - Prediction     in Green</span>
-<span class="c1"># - Standard Model in Red</span>
+<span class="c1"># - Prediction:           Green</span>
+<span class="c1"># - Standard Model:       Red</span>
+<span class="c1"># - Universe right now:   the Blue Dot</span>
 </pre></div>
 
     </div>
@@ -13774,13 +13851,13 @@ Observed : 2.35e-18
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[218]:</div>
+    <div class="prompt output_prompt">Out[108]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x1a68a882eb8&gt;]</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x22d641ce7b8&gt;</pre>
 </div>
 
 </div>
@@ -13793,7 +13870,7 @@ Observed : 2.35e-18
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -13806,12 +13883,87 @@ Observed : 2.35e-18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[233]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - It is hard for me to add the extra details with matplotlib,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># - The predicted curve can be calculated  all the way back to t=0,</span>
+<span class="c1">#   back then the Volume of Space comes out to be = 0.</span>
+<span class="c1">#   when we plot the log of the Time and Radius, the curve</span>
+<span class="c1">#   loos like a line, but this is because we are plotting the logarithms.</span>
+
+<span class="c1"># - Inflation period:</span>
+<span class="c1">#   So from t=0 to t=1 sec, the Universe rapidly expanded, mimicking</span>
+<span class="c1">#   the effects of Inflation, but as you can see, it did it with a</span>
+<span class="c1">#   nice, smooth curve, as opposed to the discontinious one as stitched</span>
+<span class="c1">#   by the standard models.</span>
+
+<span class="c1"># - Big Bang period:</span>
+<span class="c1">#   After the Inflation both theories predict exponential increase</span>
+<span class="c1">#   of the Universe Radius, and both predict the Radius of the Universe</span>
+<span class="c1">#   right now correctly.</span>
+
+<span class="c1"># - - Try verifying this yourself!</span>
+<span class="c1">#     in the equation we have for the predicted Universe Radius:</span>
+<span class="c1">#     predicted_UR = (3*(Growth*Time)/(4*pi))**(1/3)</span>
+<span class="c1">#     set the Time = Universe Life (find UL in the Wiki data)</span>
+<span class="c1">#     then find the observed Universe Radius in the wiki data</span>
+<span class="c1">#     and compare them. They should be the same +/- some small error margin</span>
+
+<span class="c1"># So, YEY! Second correct prediction!</span>
+
+<span class="c1"># - But where Big Bang theory predicts this exponetial expansion</span>
+<span class="c1">#   to continue indefinetly, by our model the Space expansion pace</span>
+<span class="c1">#   will slow, more and more, and as the Quantum Complexity (Space),</span>
+<span class="c1">#   will eventually reach its maximum (but after a very very long time),</span>
+<span class="c1">#   and will stay there for even longer time. </span>
+
+
+<span class="c1"># ... But not for infinity of time!</span>
+<span class="c1">#     If you want to know what happens next, in our model Universe,</span>
+<span class="c1">#     please let me know that you are interested, we might discus</span>
+<span class="c1">#     or I might continue with this series.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To summarize what we did up to now:</span>
+<span class="c1"># - We calculated how much bits our Universe has</span>
+<span class="c1"># - We calculated how fast the complexity of those bits grows</span>
+<span class="c1"># - We assosiated the Growth of Complexity with Growth of Space</span>
+<span class="c1"># - We calculated what the Hubble exp rate in out model Unierse,</span>
+<span class="c1">#   and found out that it matches our observations exactly</span>
+<span class="c1"># - We calculated the expansion of our Universe, and plotted</span>
+<span class="c1">#   our prediction with the standard model, and achieved:</span>
+<span class="c1"># - - Correct prediction for the current Universe Radius</span>
+<span class="c1"># - - Inflation-like initial Universe expansion, but with a</span>
+<span class="c1">#     smooth solution</span>
+<span class="c1"># - - Big Bang-like Universe expansion, but unlike the Big Bang</span>
+<span class="c1">#     theory, our model will eventually stop increasing</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># BONUS:</span>
+
+<span class="c1"># - It is hard for me to to show you some details with matplotlib,</span>
 <span class="c1">#   so here is one more representation, on which the periods can be</span>
-<span class="c1">#   seen more clearly:</span>
+<span class="c1">#   seen bit more clearly:</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;gravitum model.png&quot;</span><span class="p">)</span>
 </pre></div>
@@ -13826,7 +13978,7 @@ Observed : 2.35e-18
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[233]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13848,9 +14000,7 @@ Observed : 2.35e-18
 <div class="prompt input_prompt">In&nbsp;[231]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># As one can see, out &quot;Gravitum&quot; model predicts much smoother</span>
-<span class="c1"># representation of how the Universe evolved, given the same</span>
-<span class="c1"># parameters.</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
@@ -13863,29 +14013,7 @@ Observed : 2.35e-18
 <div class="prompt input_prompt">In&nbsp;[234]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To summarize what we did up to now:</span>
-<span class="c1"># - We calculated how much bits our Universe has</span>
-<span class="c1"># - We calculated how fast the complexity of those bits grows</span>
-<span class="c1"># - We assosiated the Growth of Complexity with Growth of Space</span>
-<span class="c1"># - We predicted what the Hubble constant would be in this Universe</span>
-<span class="c1">#   where space is just the quantum complexity</span>
-<span class="c1"># - We copared our prediction of the Hubble exp rate with the</span>
-<span class="c1">#   actual observed Hubble exp rate, and we found that our model</span>
-<span class="c1">#   prediction is accurate</span>
-<span class="c1"># - We plotted how the Radius of our predicted Universe will</span>
-<span class="c1">#   evolve and compared it to how it evolved according to the</span>
-<span class="c1">#   Standard Model, and found out that we predict the same</span>
-<span class="c1">#   Universe Volume, but with a smooth evoluton</span>
-
-<span class="c1"># FYI: In our theory the Hubble exp rate is aways equal to</span>
-<span class="c1"># the 1 over the elapsed time.</span>
-<span class="c1"># - In the current theories it is just by coincidence that the</span>
-<span class="c1">#   Hubble exp rate right now is equal to 1/UL</span>
-<span class="c1">#   (UL = Universe Life)</span>
-<span class="c1"># - In the theory here, the Hubble constant had always been</span>
-<span class="c1">#   1/UL, as a concequence of the fact that the Growh = const</span>
-<span class="c1">#   You can quickly try to verify that yourself, or if you can&#39;t</span>
-<span class="c1">#   just let me know and I&#39;ll give you more info.</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
@@ -13911,9 +14039,9 @@ Observed : 2.35e-18
 <div class="prompt input_prompt">In&nbsp;[235]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Please let me know if you have any questions or comments.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Please let me know if you have any questions or want to discuss the subject.</span>
 <span class="c1"># Contact = antongeorgiev313@gmail.com</span>
-<span class="c1"># I hope you enjoyed this presentation.</span>
+<span class="c1"># I hope you enjoyed this presentation!</span>
 </pre></div>
 
     </div>
