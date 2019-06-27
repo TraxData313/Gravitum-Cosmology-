@@ -50,4 +50,4 @@ Open Gravitum_onlineRead.ipynb or dowload and read the GravitumTheory.html. Its 
  
 Please let me know if you have any questions or want to discuss the subject.
 Contact = antongeorgiev313@gmail.com
-I hope you enjoyed this presentation!
+I hope you enjoyed this presentation! 
