@@ -7,7 +7,7 @@
    on this new and exciting topic.
  - I decided to put toghether this short Jupyter note,
    where we'll just follow the consequences of a powerful assumption:
-   "Space IS nothing but Quantum Complexity"
+   Space - Quantum Complexity duality
 
 # Out plan of action:
 
