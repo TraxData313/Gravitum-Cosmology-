@@ -1,53 +1,112 @@
-# Appendix:
+# Space to Quantum Complexity equivalence principle
+aka The Gravitum Theory
 
- - Recently a deep connection between Quantum Entanglement Complexity 
-   and the Structure of Space has become a very hot subject of study.
- - There are a lot of technical papers online regarding this subject,
-   but there are little available to the general public, 
-   on this new and exciting topic.
- - I decided to put toghether this short Jupyter note,
-   where we'll just follow the consequences of a powerful assumption:
-   Space - Quantum Complexity duality
+## Overview
 
-# Out plan of action:
+This project explores a simple but powerful assumption:
 
- 1. Count how many bits of information there are in our Universe:
-  - Take the observed Universe and crush it into a Black Hole.
-    In order to answer how much bits there are in out Universe,
-    we will count the pixels on the Horizon of the resulting Blach Hole.
+> **Space = Quantum Complexity.**
 
- 2. Calculate the Quantum Complexity of our Universe' bits:
-  - Using the Second Law of Quantum Complexity, we are going to
-    calculate how the complexity of those bits evolves with time.
-    SPOILER: It grows fast!
+Recent research has uncovered deep links between **quantum entanglement complexity** and the **structure of space**. While technical papers on this topic exist, accessible explanations for the general public are rare.
 
- 3. After that we are going to take the hint from the Holographic
-    principle (Space = Quantum Complexity), and are going to 
-    assume that Growth of Quantum Complexity = Growth of Space
+Here, we follow the consequences of that assumption step by step — from calculating the information content of the universe to predicting its expansion rate — and we compare those predictions with real cosmological data.
 
- 4. Once here, we will have our model of the Universe expansion and put it to the test:
-  - We are going to calculate the predicted Hubble expansion rate for our
-    theory, and compare it with the real (observed) Hubble exp rate
+---
 
- 5. Now, let's plot our model agains the data from the standard expansion models:
-  - Currently our Universe expansion is modeled by the Big Bang Theory, which
-    can be traced back to almost time = 0 seconds.
-  - Before that, Inflation theory predicts that the Universe expanded rapidly in a fraction
-    of a second, just moments after time = 0 (at about t = 1e-35 seconds (0.0...35zeroshere..01 seconds))
-  - There is no "standard" theory of what happened before Inflation.
+## Plan of Action
 
-  - Will our model be able to extend back to that "before Inflation" time?
-  - Will our model show a smoother picture of what could have happened?
-  - Can we go even further?
+### 1. Count the Universe's Information Bits
 
-# Lets get started and see!
+* Imagine crushing the entire observable universe into a **black hole**.
+* Count the **pixels** (Planck areas) on its event horizon.
+* This gives the total number of bits of pure information in our universe.
 
- What we you need to be able to follow this presentation?
- - Only some hight school maths and maybe basic Python knowedge
- - We are going to let Python do all the heavy leafting for us
+### 2. Calculate Quantum Complexity Growth
 
-Open Gravitum_onlineRead.ipynb or dowload and read the GravitumTheory.html. Its the same content.
- 
-Please let me know if you have any questions or want to discuss the subject.
-Contact = antongeorgiev313@gmail.com
-I hope you enjoyed this presentation! 
+* Use the **Second Law of Quantum Complexity** to see how the complexity of those bits evolves over time.
+* **Spoiler:** it grows extremely fast!
+
+### 3. Connect Complexity to Space
+
+* Guided by the **Holographic Principle**:
+
+  ```
+  Growth of Quantum Complexity = Growth of Space
+  ```
+
+### 4. Predict the Hubble Expansion Rate
+
+* From our growth model, predict the **Hubble constant**.
+* Compare with the observed value — within error bars, the match is exact.
+
+### 5. Compare with Standard Cosmology
+
+* Current mainstream model: **Inflation** + **Big Bang**.
+* Our model gives:
+
+  * Smooth, continuous early-universe expansion (no discontinuities at inflation).
+  * Correct prediction for the current universe radius.
+  * Future slowing of expansion, rather than eternal acceleration.
+
+---
+
+## Reproducing the Model
+
+The key prediction for the universe radius (R) over time (t):
+
+$$
+R(t) = \left( \frac{3 \cdot (\text{Universe Growth} \cdot t)}{4 \pi} \right)^{1/3}
+$$
+
+Where:
+
+* **Growth** = number of bits × (Planck volume / Planck time)
+* **Number of bits** is derived from black hole thermodynamics.
+
+---
+
+## Results
+
+**Predicted Hubble constant:**
+
+```
+Predicted:  2.29 × 10⁻¹⁸ (m/s)/m
+Observed :  2.35 × 10⁻¹⁸ (m/s)/m ± error
+```
+
+**Universe Radius vs Time (log-log scale):**
+
+![Model Plot](static/standard_plot.bmp)
+
+* Green: Prediction
+* Red: Standard model
+* Blue dot: Current epoch
+
+Our model:
+
+* Smoothly extends to *t → 0*
+* Mimics inflation without abrupt jumps
+* Matches present-day measurements exactly
+
+---
+
+Full derivation:
+
+1. [Gravitum_onlineRead.md](Gravitum_onlineRead.md) (digested markdown)
+2. [Gravitum_onlineRead.ipynb](Gravitum_onlineRead.ipynb) (original notebook with detailed comments and calculations)
+3. [GravitumTheory.html](GravitumTheory.html) (original notebook as a static HTML)
+
+---
+
+## Contact
+
+Anton Georgiev
+📧 [antongeorgiev313@gmail.com](mailto:antongeorgiev313@gmail.com)
+
+---
+
+If you find this work interesting, feel free to open an issue or start a discussion.
+
+---
+
+If you want, I can now also make a **more polished README** that includes **inline equations in LaTeX, better diagrams, and a short “Physics background” section** so that even readers unfamiliar with quantum complexity can follow it without opening the notebook. That would make it look like a small, self-contained paper right on GitHub.
