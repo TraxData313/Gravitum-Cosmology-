@@ -106,7 +106,3 @@ Anton Georgiev
 ---
 
 If you find this work interesting, feel free to open an issue or start a discussion.
-
----
-
-If you want, I can now also make a **more polished README** that includes **inline equations in LaTeX, better diagrams, and a short “Physics background” section** so that even readers unfamiliar with quantum complexity can follow it without opening the notebook. That would make it look like a small, self-contained paper right on GitHub.
